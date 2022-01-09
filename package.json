@@ -1,0 +1,22 @@
+{
+  "name": "reddit-bot-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kythosyer/reddit-bot-finder.git"
+  },
+  "author": "Kythosyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kythosyer/reddit-bot-finder/issues"
+  },
+  "homepage": "https://github.com/Kythosyer/reddit-bot-finder#readme",
+  "dependencies": {
+    "snoowrap": "^1.23.0"
+  }
+}
