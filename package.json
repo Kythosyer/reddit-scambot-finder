@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Kythosyer/reddit-bot-finder#readme",
   "dependencies": {
-    "snoowrap": "^1.23.0"
+    "similarity-matrix": "^0.1.9",
+    "snoowrap": "^1.23.0",
+    "string-similarity": "^4.0.4",
+    "tree-flatten": "^1.0.0"
   }
 }
