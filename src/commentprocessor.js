@@ -59,16 +59,10 @@ function checkCommonWords(comments) {
 	];
 	for (i = 0; i < comments.length; i++) {
 		for (k = 0; k < commonWords.length; k++) {
-			var similarity = ss.compareTwoStrings(
-				comments[i].body.toLowerCase(),
-				commonWords[k]
-			);
+			var similarity = ss.compareTwoStrings(comments[i].body.toLowerCase(), commonWords[k]);
 			if (similarity >= sens && comments[i].depth >= 1) {
 				logger.info("=====================================");
-				logger.info(
-					"\x1b[31m%s\x1b[0m",
-					"WORD USAGE FOUND: " + similarity
-				);
+				logger.info("\x1b[31m%s\x1b[0m", "WORD USAGE FOUND: " + similarity);
 				logger.info("=====================================");
 				logger.info("Comment id: " + comments[i].id);
 				logger.info("Comment Author: " + comments[i].author.name);
@@ -88,38 +82,30 @@ function checkSimilairComments(comments) {
 	const sens = 0.675;
 	for (i = 0; i < comments.length; i++) {
 		for (k = i + 1; k < comments.length; k++) {
-			if (
-				!comments[i].body.includes(">") ||
-				!comments[k].body.includes(">")
-			) {
-				var similarity = ss.compareTwoStrings(
-					comments[i].body,
-					comments[k].body
-				);
-				if (
-					similarity >= sens &&
-					(comments[i].depth >= 1 || comments[k].depth >= 1)
-				) {
-					logger.info("=====================================");
-					logger.info(
-						"\x1b[31m%s\x1b[0m",
-						"SIMILARITY FOUND: " + similarity
-					);
-					logger.info("=====================================");
-					logger.info("Comment id: " + comments[i].id);
-					logger.info("Comment Author: " + comments[i].author.name);
-					logger.info("Comment Depth: " + comments[i].depth);
-					logger.info("Comment Content: " + comments[i].body);
-					logger.info("Comment id: " + comments[k].id);
-					logger.info("Comment Author: " + comments[k].author.name);
-					logger.info("Comment Depth: " + comments[k].depth);
-					logger.info("Comment Content: " + comments[k].body);
-					comments[i].confidence = similarity;
-					similarComments.push(comments[i]);
-					comments[k].confidence = similarity;
-					similarComments.push(comments[k]);
+
+				var similarity = ss.compareTwoStrings(comments[i].body, comments[k].body);
+				if (similarity >= sens && (comments[i].depth >= 1 || comments[k].depth >= 1)) {
+          if (!comments[i].body.includes(">") && !comments[k].body.includes(">")) {
+              logger.info("=====================================");
+    					logger.info("\x1b[31m%s\x1b[0m", "SIMILARITY FOUND: " + similarity);
+    					logger.info("=====================================");
+    					logger.info("Comment id: " + comments[i].id);
+    					logger.info("Comment Author: " + comments[i].author.name);
+    					logger.info("Comment Depth: " + comments[i].depth);
+    					logger.info("Comment Content: " + comments[i].body);
+    					logger.info("Comment id: " + comments[k].id);
+    					logger.info("Comment Author: " + comments[k].author.name);
+    					logger.info("Comment Depth: " + comments[k].depth);
+    					logger.info("Comment Content: " + comments[k].body);
+    					comments[i].confidence = similarity;
+    					similarComments.push(comments[i]);
+    					comments[k].confidence = similarity;
+    					similarComments.push(comments[k]);
+
+
+          }
 				}
-			}
+
 		}
 	}
 	return similarComments;
