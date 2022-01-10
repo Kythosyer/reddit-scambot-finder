@@ -1,8 +1,8 @@
 {
   "name": "reddit-bot-finder",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,9 +19,7 @@
   "dependencies": {
     "pino": "^7.6.2",
     "pino-pretty": "^7.3.0",
-    "similarity-matrix": "^0.1.9",
     "snoowrap": "^1.23.0",
-    "string-similarity": "^4.0.4",
-    "tree-flatten": "^1.0.0"
+    "string-similarity": "^4.0.4"
   }
 }
