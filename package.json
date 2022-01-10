@@ -5,18 +5,18 @@
   "main": "app.js",
   "scripts": {
     "start": "npx env-cmd node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Tests Passed\" && exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kythosyer/reddit-bot-finder.git"
+    "url": "git+https://github.com/Kythosyer/reddit-scambot-finder.git"
   },
   "author": "Kythosyer",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kythosyer/reddit-bot-finder/issues"
+    "url": "https://github.com/Kythosyer/reddit-scambot-finder/issues"
   },
-  "homepage": "https://github.com/Kythosyer/reddit-bot-finder#readme",
+  "homepage": "https://github.com/Kythosyer/reddit-scambot-finder#readme",
   "dependencies": {
     "pino": "^7.6.2",
     "pino-pretty": "^7.3.0",

@@ -1,5 +1,3 @@
-//uninstall tree-flatten
-//uninstall SimulatiryMatrix
 
 //Custom Modules
 const {swuser} = require('./src/swuser.js');
@@ -9,7 +7,7 @@ const {logger} = require('./src/logger.js');
 
 
 getPosts();
-
+setInterval(getPosts, 300000);
 function getPosts() {
     var datetime = new Date();
     logger.info("Getting new rising posts");
@@ -24,7 +22,7 @@ try {
       }).then(post => {
           logger.info("Data Recieved");
           var commentData = commentProcessor(post);
-
+          processSuspiciousData(commentData);
       });
   });
 } catch (e) {
@@ -34,5 +32,13 @@ try {
 }
 
 function processSuspiciousData(commentData){
-  console.log(commentData);
+  logger.debug(commentData);
+  if(commentData.cFound){
+      var commonComments = commentData.cArr;
+      var numComments = commentData.cArr.length;
+  }
+  if(commentData.sFound){
+      var similarComments = commentData.sArr;
+      var numComment = commentData.cArr.length;
+  }
 }
