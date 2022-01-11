@@ -12,8 +12,8 @@ function getPosts() {
 	logger.info("Getting popular subreddit's rising posts");
 
 	try {
-		swuser.getPopularSubreddits({limit: 15}).map(subreddit => {
-			swuser.getRising(subreddit.display_name, {limit: 15}).filter(submission => submission.num_comments > 10).map(submission => {
+		swuser.getPopularSubreddits({limit: 10}).map(subreddit => {
+			swuser.getRising(subreddit.display_name, {limit: 25}).filter(submission => submission.num_comments > 10).map(submission => {
 				swuser.getSubmission(submission.id).expandReplies({limit: 25, depth: 1}).then(submission => {
 					var commentData = commentProcessor(submission);
 					processSuspiciousData(commentData);
