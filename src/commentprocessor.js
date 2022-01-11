@@ -84,26 +84,27 @@ function checkSimilairComments(comments) {
 		for (k = i + 1; k < comments.length; k++) {
 
 				var similarity = ss.compareTwoStrings(comments[i].body, comments[k].body);
-				if (similarity >= sens && (comments[i].depth >= 1 || comments[k].depth >= 1)) {
-          if (!comments[i].body.includes(">") && !comments[k].body.includes(">")) {
-              logger.info("=====================================");
-    					logger.info("\x1b[31m%s\x1b[0m", "SIMILARITY FOUND: " + similarity);
-    					logger.info("=====================================");
-    					logger.info("Comment id: " + comments[i].id);
-    					logger.info("Comment Author: " + comments[i].author.name);
-    					logger.info("Comment Depth: " + comments[i].depth);
-    					logger.info("Comment Content: " + comments[i].body);
-    					logger.info("Comment id: " + comments[k].id);
-    					logger.info("Comment Author: " + comments[k].author.name);
-    					logger.info("Comment Depth: " + comments[k].depth);
-    					logger.info("Comment Content: " + comments[k].body);
-    					comments[i].confidence = similarity;
-    					similarComments.push(comments[i]);
-    					comments[k].confidence = similarity;
-    					similarComments.push(comments[k]);
+				if (similarity >= sens) {
+              //Do checks
+              if((comments[i].depth >= 1 || comments[k].depth >= 1) && !(comments[i].body.includes('>') || comments[k].body.includes('>')) && !(comments[i].body == '[removed]' || comments[k].body == '[removed]') && !(comments[i].author.name == comments[k].author.name)){
+                logger.info("=====================================");
+      					logger.info("\x1b[31m%s\x1b[0m", "SIMILARITY FOUND: " + similarity);
+      					logger.info("=====================================");
+      					logger.info("Comment id: " + comments[i].id);
+      					logger.info("Comment Author: " + comments[i].author.name);
+      					logger.info("Comment Depth: " + comments[i].depth);
+      					logger.info("Comment Content: " + comments[i].body);
+      					logger.info("Comment id: " + comments[k].id);
+      					logger.info("Comment Author: " + comments[k].author.name);
+      					logger.info("Comment Depth: " + comments[k].depth);
+      					logger.info("Comment Content: " + comments[k].body);
+      					comments[i].confidence = similarity;
+      					similarComments.push(comments[i]);
+      					comments[k].confidence = similarity;
+      					similarComments.push(comments[k]);
+              }
 
 
-          }
 				}
 
 		}
